@@ -52,7 +52,10 @@ export const DiscordFeed: FC = () => {
                 Live Discord Stream
             </h1>
             {messages.map((message, i) => (
+                <span>
                     <DiscordMessage key={message.uuid} message={message} userData={apiRes.users ?? []} roleData={apiRes.roles ?? []} channelData={apiRes.channels ?? []} attachmentData={apiRes.attachments ?? []} />
+                    <SpeakDiscordMessage authorname={message.authorname} content={message.content} />
+                </span>
             ))}
             <h1 className={`text-neutral-600 text-3xl mb-4 text-center`}>
                 Post more to make
