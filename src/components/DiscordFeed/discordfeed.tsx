@@ -59,10 +59,10 @@ export const DiscordFeed: FC = () => {
                 Live Discord Stream
             </h1>
             {messages.map((message, i) => (
-                <span>
-                    <DiscordMessage key={message.uuid} message={message} userData={apiRes.users ?? []} roleData={apiRes.roles ?? []} channelData={apiRes.channels ?? []} attachmentData={apiRes.attachments ?? []} />
+                <span key={message.uuid}>
+                    <DiscordMessage message={message} userData={apiRes.users ?? []} roleData={apiRes.roles ?? []} channelData={apiRes.channels ?? []} attachmentData={apiRes.attachments ?? []} />
                     {i == 0 ? (
-                        <SpeakDiscordMessage key={message.uuid + "-TTS"} authorname={message.authorname} content={message.content} />
+                        <SpeakDiscordMessage authorname={message.authorname} content={message.content} />
                     ) : null }
                 </span>
             ))}
