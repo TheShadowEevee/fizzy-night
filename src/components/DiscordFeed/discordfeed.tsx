@@ -47,6 +47,9 @@ export const DiscordFeed: FC = () => {
 
     const messages = apiRes.messages as Message[];
 
+    console.log(messages)
+    console.log("Ran")
+
     return (
         <div className={`w-[50vw] p-4 overflow-hidden`}>
             <h1 className={`text-white text-3xl mb-4 text-center`}>
@@ -55,7 +58,9 @@ export const DiscordFeed: FC = () => {
             {messages.map((message, i) => (
                 <span>
                     <DiscordMessage key={message.uuid} message={message} userData={apiRes.users ?? []} roleData={apiRes.roles ?? []} channelData={apiRes.channels ?? []} attachmentData={apiRes.attachments ?? []} />
-                    <SpeakDiscordMessage authorname={message.authorname} content={message.content} />
+                    {i == 0 ? (
+                        <SpeakDiscordMessage key={message.uuid + "-TTS"} authorname={message.authorname} content={message.content} />
+                    ) : null }
                 </span>
             ))}
             <h1 className={`text-neutral-600 text-3xl mb-4 text-center`}>
