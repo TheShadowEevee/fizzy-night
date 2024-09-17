@@ -134,7 +134,9 @@ export const DiscordMessage: FC<{
             <h1 className={`text-white text-xl break-all`}>
                         <span className="inline-block">
                     {message.content ? (
-                        <ParseDiscordMessage message={message.content} guildid={message.guildid} userData={userData} roleData={roleData} channelData={channelData} />
+                        <span>
+                            <ParseDiscordMessage message={message.content} guildid={message.guildid} userData={userData} roleData={roleData} channelData={channelData} />
+                        </span>
                     ) : null}
                     {message.content && message.attachments ? (
                         <span>
@@ -206,6 +208,28 @@ export const ParseDiscordMessage: FC<{
         />
     ));
 };
+
+export const SpeakDiscordMessage: FC<{
+    authorname: string;
+    content: string;
+}> = ({
+    authorname,
+    content
+}) => {
+
+    const utterance = new SpeechSynthesisUtterance(authorname + "said" + content);
+
+    // Select a voice
+    const voices = speechSynthesis.getVoices();
+    utterance.voice = voices[0]; // Choose a specific voice
+
+    // Speak the text
+    speechSynthesis.speak(utterance);
+
+    return (
+        <></>
+    )
+}
 
 export const ParseDiscordAttachments: FC<{
     messageAttachments: string;
