@@ -47,9 +47,6 @@ export const DiscordFeed: FC = () => {
 
     const messages = apiRes.messages as Message[];
 
-    console.log(messages)
-    console.log("Ran")
-
     return (
         <div className={`w-[50vw] p-4 overflow-hidden`}>
             <h1 className={`text-white text-3xl mb-4 text-center`}>
